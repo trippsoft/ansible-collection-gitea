@@ -1,5 +1,9 @@
 ---
 collections:
-  - ansible.utils
-  - trippsc2.general
-  - trippsc2.nginx
+  - name: ansible.utils
+  - name: community.crypto
+    version: <3.0.0
+  - name: community.general
+    version: <12.0.0
+  - name: trippsc2.general
+  - name: trippsc2.nginx

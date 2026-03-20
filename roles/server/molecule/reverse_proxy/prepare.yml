@@ -21,7 +21,7 @@
         name: "{{ nginx_group }}"
         state: present
         system: true
-    
+
     - name: Create NGINX user
       become: true
       ansible.builtin.user:
@@ -42,7 +42,7 @@
         cert_certificate_group: "{{ nginx_group }}"
         cert_private_key_path: "{{ nginxproxy_server_certificate_key_path }}"
         cert_private_key_owner: "{{ nginx_user }}"
-        cert_private_key_group: "{{ nginx_group }}" 
+        cert_private_key_group: "{{ nginx_group }}"
         cert_private_key_mode: '0400'
         cert_common_name: "{{ ansible_fqdn }}"
         cert_subject_alternative_names:
