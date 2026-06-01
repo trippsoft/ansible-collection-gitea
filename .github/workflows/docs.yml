@@ -19,7 +19,26 @@ jobs:
     name: Generate server role documentation
     permissions:
       contents: write
-    uses: trippsoft/github-actions/.github/workflows/role-docs.yml@main
-    with:
-      working_directory: 'trippsc2.gitea'
-      role_name: 'server'
+    runs-on:
+      - self-hosted
+      - linux
+      - ansible
+      - x64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          path: trippsc2.gitea
+          ref: main
+      - name: Generate server role documentation
+        working-directory: 'trippsc2.gitea'
+        run: |
+          source ~/venv/ansible-2.16/bin/activate
+          cd ./roles/server
+          aar-doc . markdown
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add README.md || /bin/true
+          git commit -m "Update server role documentation." || /bin/true
+          git push origin main
+          deactivate
