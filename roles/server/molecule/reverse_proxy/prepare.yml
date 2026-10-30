@@ -48,6 +48,6 @@
         cert_subject_alternative_names:
           - 'DNS:{{ ansible_facts.fqdn }}'
           - 'DNS:localhost'
-          - 'IP:{{ ansible_facts.host }}'
+          - 'IP:{{ ansible_host }}'
           - 'IP:127.0.0.1'
     - role: trippsc2.nginx.oss_reverse_proxy
