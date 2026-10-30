@@ -1,0 +1,5 @@
+---
+collections:
+  - name: ansible.utils
+  - name: trippsc2.general
+  - name: trippsc2.nginx

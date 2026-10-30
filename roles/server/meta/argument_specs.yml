@@ -1337,7 +1337,7 @@ argument_specs:
       gitea_server_domain:
         type: str
         required: false
-        default: "{{ 'localhost' if gitea_server_http_address == '127.0.0.1' else ansible_fqdn }}"
+        default: "{{ 'localhost' if gitea_server_http_address == '127.0.0.1' else ansible_facts.fqdn }}"
         description:
           - The fully qualified domain name of this Gitea server.
           - This refers to the direct connection to the Gitea server, not the reverse proxy or load balancer VIP.
@@ -1536,7 +1536,7 @@ argument_specs:
       gitea_server_ssh_domain:
         type: str
         required: false
-        default: "{{ ansible_fqdn }}"
+        default: "{{ ansible_facts.fqdn }}"
         description:
           - The fully qualified domain name of the Gitea SSH server.
           - This will be presented to uses for cloning and pushing repositories.

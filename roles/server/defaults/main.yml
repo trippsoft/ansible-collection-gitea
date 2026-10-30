@@ -295,7 +295,7 @@ gitea_server_proxy_protocol_tls_bridging: false
 gitea_server_proxy_protocol_header_timeout: 5s
 gitea_server_proxy_protocol_accept_unknown: false
 
-gitea_server_domain: "{{ 'localhost' if gitea_server_http_address == '127.0.0.1' else ansible_fqdn }}"
+gitea_server_domain: "{{ 'localhost' if gitea_server_http_address == '127.0.0.1' else ansible_facts.fqdn }}"
 
 gitea_server_http_address: '0.0.0.0'
 gitea_server_http_port: 3000
@@ -337,7 +337,7 @@ gitea_server_ssh_host_keys:
   - "{{ gitea_server_app_data_path }}/ssh/gogs.rsa"
 
 gitea_server_ssh_create_authorized_keys_file: true
-gitea_server_ssh_domain: "{{ ansible_fqdn }}"
+gitea_server_ssh_domain: "{{ ansible_facts.fqdn }}"
 gitea_server_ssh_authorized_keys_backup: false
 gitea_server_ssh_trusted_user_ca_keys_path: "{{ gitea_working_directory_path }}/.ssh/gitea-trusted-user-ca-keys.pem"
 gitea_server_ssh_authorized_principals_allow_anything: false
